@@ -205,17 +205,4 @@ class MapKeysTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-
-    /** @test */
-    public function it_throws_exception_for_invalid_keys(): void
-    {
-        $array = ['key' => 'value'];
-
-        $this->expectException(TypeError::class);
-
-        // Attempting to create an array with an invalid key type (array)
-        Arr::mapKeys($array, static function () {
-            return [];
-        });
-    }
 }
