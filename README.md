@@ -40,7 +40,23 @@ This will add the package to your project’s dependencies and create an autoloa
 
 ## Usage
 
+### mapKeys
 
+Map keys of an array like this:
+
+```php
+$array = [
+    'Key1' => [
+        'Key2' => 1
+    ]
+];
+
+$new_array = Arr::mapKeys($array, function (string $key) {
+    return strtolower($key);
+});
+
+$key2 = $new_array['key1']['key2']);
+```
 
 ## Contributing
 
