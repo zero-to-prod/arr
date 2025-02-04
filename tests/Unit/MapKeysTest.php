@@ -16,7 +16,7 @@ class MapKeysTest extends TestCase
             ]
         ];
 
-        $new_array = Arr::mapKeys($array, function (string $key) {
+        $new_array = Arr::mapKeys($array, static function (string $key) {
             return strtolower($key);
         });
 
