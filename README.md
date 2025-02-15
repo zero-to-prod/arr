@@ -17,6 +17,8 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+    - [mapKeys()](#mapkeys)
+    - [set()](#set)
 - [Local Development](./LOCAL_DEVELOPMENT.md)
 - [Contributing](#contributing)
 
@@ -40,7 +42,7 @@ This will add the package to your project’s dependencies and create an autoloa
 
 ## Usage
 
-### mapKeys
+### mapKeys()
 
 Map keys of an array like this:
 
@@ -56,6 +58,33 @@ $new_array = Arr::mapKeys($array, function (string $key) {
 });
 
 $key2 = $new_array['key1']['key2']);
+```
+
+### set()
+
+Set values in arrays using dot notation, merge arrays, or use callbacks:
+
+```php
+
+// Set value with dot notation
+$array = ['a' => ['b' => 1]];
+$new_array = Arr::set($array, 'a.b', 2); // ['a' => ['b' => 2]]
+
+// Merge arrays
+$array1 = ['a' => 1];
+$array2 = ['b' => 2];
+$new_array = Arr::set($array1, $array2); // ['a' => 1, 'b' => 2]
+
+// Use a callback
+$array = ['a' => 1];
+$new_array = Arr::set($array, function($array) {
+    $array['b'] = 2;
+    return $array;
+}); // ['a' => 1, 'b' => 2]
+
+// Empty string key does not modify the array
+$array = ['a' => 1];
+$new_array = Arr::set($array, ''); // ['a' => 1]
 ```
 
 ## Contributing
