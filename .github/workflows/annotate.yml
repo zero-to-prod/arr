@@ -1,12 +1,7 @@
-name: DocBlock Annotator
+name: annotate
 
 on:
   workflow_dispatch:
-    inputs:
-      pull_request_number:
-        description: 'Pull Request Number'
-        required: true
-        type: string
 
 jobs:
   update-docblocks:
@@ -16,20 +11,10 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Get PR information
-        uses: octokit/request-action@v2.x
-        id: get_pr
-        with:
-          route: GET /repos/{repository}/pulls/{pull_number}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          pull_number: ${{ github.event.inputs.pull_request_number }}
-
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ fromJson(steps.get_pr.outputs.data).head.ref }}
+          ref: ${{ github.ref }}  # Changed from github.head_ref to github.ref for general use
 
       - name: Install jq
         run: sudo apt-get install -y jq
@@ -52,7 +37,7 @@ jobs:
 
       - name: Run DocBlock Annotator
         run: |
-          docker run -v ${{ github.workspace }}:/app/run --rm davidsmith3/docblock-annotator-cli docblock-annotator-cli:update /app/run "@link ${{ steps.composer.outputs.homepage }}"
+          docker run -v ${{ github.workspace }}/src:/app/run --rm davidsmith3/docblock-annotator-cli docblock-annotator-cli:update /app/run "@link ${{ steps.composer.outputs.homepage }}"
 
       - name: Check for changes
         id: git-check
@@ -69,5 +54,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "docs: Update DocBlock annotations with homepage link [automated]"
+          git commit -m "Update docblocks."
           git push
