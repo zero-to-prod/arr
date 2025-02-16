@@ -43,7 +43,6 @@ class Arr
      * Arr::set(['a' => 1], function($array) { $array['b'] = 2; return $array; }) returns ['a' => 1, 'b' => 2]
      *```
      *
-     *
      * @template TKey of array-key
      * @template TValue
      * @template TNewKey of array-key
