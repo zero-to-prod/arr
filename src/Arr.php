@@ -17,7 +17,7 @@ class Arr
      * @param  callable(TKey): TNewKey  $callback
      *
      * @return array<TNewKey, TValue>
-     * @link    https://github.com/zero-to-prod/arr
+     * @link https://github.com/zero-to-prod/arr
      */
     public static function mapKeys(array $array, callable $callback): array
     {
@@ -54,7 +54,7 @@ class Arr
      * @param  TValue|null            $value  The value to set when `$key`` is a string (optional)
      *
      * @return array<TKey|TNewKey, TValue> The modified array
-     * @link    https://github.com/zero-to-prod/arr
+     * @link https://github.com/zero-to-prod/arr
      */
     public static function set(array $array, $key, $value = null): array
     {
