@@ -17,6 +17,7 @@ class Arr
      * @param  callable(TKey): TNewKey  $callback
      *
      * @return array<TNewKey, TValue>
+     * @link https://github.com/zero-to-prod/arr
      */
     public static function mapKeys(array $array, callable $callback): array
     {
@@ -43,7 +44,6 @@ class Arr
      * Arr::set(['a' => 1], function($array) { $array['b'] = 2; return $array; }) returns ['a' => 1, 'b' => 2]
      *```
      *
-     *
      * @template TKey of array-key
      * @template TValue
      * @template TNewKey of array-key
@@ -53,6 +53,7 @@ class Arr
      * @param  TValue|null            $value  The value to set when `$key`` is a string (optional)
      *
      * @return array<TKey|TNewKey, TValue> The modified array
+     * @link https://github.com/zero-to-prod/arr
      */
     public static function set(array $array, $key, $value = null): array
     {
