@@ -2,6 +2,9 @@
 
 namespace Zerotoprod\Arr;
 
+/**
+ * @link https://github.com/zero-to-prod/arr
+ */
 class Arr
 {
     /**
