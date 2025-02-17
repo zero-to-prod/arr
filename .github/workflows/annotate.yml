@@ -36,8 +36,7 @@ jobs:
           fi
 
       - name: Run DocBlock Annotator
-        run: |
-          docker run -v ${{ github.workspace }}/src:/app/run --rm davidsmith3/docblock-annotator-cli docblock-annotator-cli:update /app/run "@link ${{ steps.composer.outputs.homepage }}"
+        run: docker run -v ${{ github.workspace }}/src:/app/run --rm davidsmith3/docblock-annotator-cli docblock-annotator-cli:update /app/run "@link ${{ steps.composer.outputs.homepage }}"
 
       - name: Check for changes
         id: git-check
