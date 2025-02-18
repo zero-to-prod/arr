@@ -3,6 +3,8 @@
 namespace Zerotoprod\Arr;
 
 /**
+ * Array helpers.
+ *
  * @link https://github.com/zero-to-prod/arr
  */
 class Arr
