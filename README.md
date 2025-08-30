@@ -40,6 +40,39 @@ composer require zero-to-prod/arr
 
 This will add the package to your project’s dependencies and create an autoloader entry for it.
 
+## Documentation Publishing
+
+You can publish this README to your local documentation directory.
+
+This can be useful for providing documentation for AI agents.
+
+This can be done using the included script:
+
+```bash
+# Publish to default location (./docs/zero-to-prod/arr)
+vendor/bin/zero-to-prod-arr
+
+# Publish to custom directory
+vendor/bin/zero-to-prod-arr /path/to/your/docs
+```
+
+#### Automatic Documentation Publishing
+
+You can automatically publish documentation by adding the following to your `composer.json`:
+
+```json
+{
+  "scripts": {
+    "post-install-cmd": [
+      "zero-to-prod-arr"
+    ],
+    "post-update-cmd": [
+      "zero-to-prod-arr"
+    ]
+  }
+}
+```
+
 ## Usage
 
 ### mapKeys()
